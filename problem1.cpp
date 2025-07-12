@@ -60,13 +60,43 @@ using namespace std;
         }
             j++;
         }
+if(startIndex==endIndex)
+{
+    vector<int> a ={0,0};
 
-        vector<int>a={startIndex,endIndex};
-cout<<startIndex;
-cout<<endIndex;
+    return a;
+}
+        vector<int>a={nums[startIndex],nums[endIndex]};
+
         return a;
+
     }
-int main()
+
+    int arithmeticTriplets(vector<int>& nums, int diff) {
+        
+        int numOfTrips=0;
+        map<int,int>map;
+        for(int i=0;i<nums.size();i++)
+        {
+        map[nums[i]]=nums[i]+diff;
+        }
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            vector<int> a={nums[i]};
+            if(map.find(nums[i]+diff)!= map.end())
+            {
+                if(map.find(nums[i]+diff+diff)!=map.end())
+                {
+                    numOfTrips++;
+                }
+            }
+
+        }
+return numOfTrips;
+    }
+
+    int main()
 {vector<int>a={3,2,3};
 
 twoSum(a,6);
